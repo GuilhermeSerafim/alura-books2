@@ -1,12 +1,17 @@
 //Código de fácil leitura e assíncrono
 async function buscaEndereco() {
+    try {
+        var consultaCep = await fetch('https://viacep.com.br/ws/01001250/json/');
+        var consultaCepConvertida = await consultaCep.json();
 
-var consultaCep = await fetch('https://viacep.com.br/ws/05776340/json/');
+        if (consultaCepConvertida.erro) {
+            throw Error('Esse CEP não existe');
+        };
 
-var consultaCepConvertida = await consultaCep.json();
-
-console.log(consultaCepConvertida);
-
+        console.log(consultaCepConvertida);
+    } catch (erro) {
+        console.log(erro);
+    };
 };
 
 buscaEndereco();
