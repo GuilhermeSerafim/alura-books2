@@ -1,4 +1,3 @@
-//Código de fácil leitura e assíncrono
 async function buscaEndereco(cep) {
     try {
         var consultaCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -8,6 +7,16 @@ async function buscaEndereco(cep) {
             throw Error('Esse CEP não existe');
         };
 
+        var cidade = document.getElementById('cidade');
+        var logradouro = document.getElementById('endereco');
+        var estado = document.getElementById('estado');
+        var bairro = document.getElementById('bairro');
+
+        cidade.value = consultaCepConvertida.localidade;
+        logradouro.value = consultaCepConvertida.logradouro;
+        estado.value = consultaCepConvertida.uf;
+        bairro.value = consultaCepConvertida.bairro;
+
         console.log(consultaCepConvertida);
         return consultaCepConvertida;
     } catch (erro) {
@@ -15,11 +24,5 @@ async function buscaEndereco(cep) {
     };
 };
 
-//Dinâmica
 var cep = document.getElementById('cep');
 cep.addEventListener("focusout", () => buscaEndereco(cep.value));
-
-//Estático
-// let ceps = ['01001000', '05776340', '01001001'];
-// let conjuntoCeps = ceps.map(valores => buscaEndereco(valores));
-// Promise.all(conjuntoCeps).then(respostas => console.log(respostas));
