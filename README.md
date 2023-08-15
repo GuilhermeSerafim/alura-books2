@@ -1,5 +1,8 @@
 # alura-books2
-Curso de JavaScript: consumindo e tratando dados de uma API
+A principal funcionalidade é permitir que os usuários preencham seus dados pessoais e, ao informar o CEP, os campos de endereço são automaticamente preenchidos com base nos dados obtidos da API ViaCEP.
+
+Utilizando conceitos de JavaScript assíncrono, a fetch API e Promises, o projeto oferece uma experiência fluida ao usuário, tratando possíveis erros de requisição da API e oferecendo feedback em tempo real.
+
 # Sobre o curso
 Faça esse curso de JavaScript e:
 - Entenda como funciona o JavaScript assíncrono
